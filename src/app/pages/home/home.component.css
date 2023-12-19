@@ -1,0 +1,44 @@
+.container {
+  width: 600px;
+}
+
+.newTask.input {
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tasks {
+  border-radius: 20px;
+  background: #f1faee;
+}
+.tasks ul {
+  list-style: none;
+}
+.tasks ul li {
+  display: flex;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #dad7cd;
+  padding: 20px;
+  align-items: center;
+}
+.tasks ul li .circle {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.tasks ul li .close {
+  display: none;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.tasks ul li:hover .close {
+  display: block;
+}
