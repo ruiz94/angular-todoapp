@@ -1,19 +1,49 @@
-<p>home works!</p>
-
 <div class="container">
   <input
     type="text"
     class="newTask input"
     placeholder="Nueva task"
-    [value]="taskValue()"
-    (change)="handlerChange($event)"
+    [formControl]="taskControl"
+    (keydown.enter)="handlerChange()"
   />
   <div class="tasks">
     <ul>
-      <li *ngFor="let task of tasks(); let i = index">
-        <span class="circle"></span>{{ task }}
-        <span class="close" (click)="deleteTask(i)">X</span>
+      <li class="task"
+      *ngFor="let task of tasksByFilter()"
+      [class.completed]="task.completed"
+      [class.editing]="task.editing"
+      (dblclick)="updateEditingMode(task.id)"
+
+      >
+        <div class="view">
+          <div class="circle"  (click)="onCompleted(task.id)"></div>
+          <span class="title"> {{ task.title }}</span>
+          <div class="close" (click)="deleteTask(task.id)">x</div>
+        </div>
+        <input type="text" class="edit" [value]="task.title" (change)="updateTask(task.id, $event)" >
       </li>
+      <div class="controls">
+        <div class="count">
+          {{tasksByFilter().length}} Item{{ tasksByFilter().length === 1 ? '':'s'}}
+        </div>
+        <ul class="filters">
+          <li>
+            <a (click)="onChangeFilter('all')"
+            [class.selected]="filter() === 'all'">All</a>
+          </li>
+          <li>
+            <a (click)="onChangeFilter('pending')"
+            [class.selected]="filter() === 'pending'">Pending</a>
+          </li>
+          <li>
+            <a (click)="onChangeFilter('completed')"
+            [class.selected]="filter() === 'completed'">Completed</a>
+          </li>
+        </ul>
+        <div class="clear">
+          <span>Clear completed</span>
+        </div>
+      </div>
     </ul>
   </div>
 </div>

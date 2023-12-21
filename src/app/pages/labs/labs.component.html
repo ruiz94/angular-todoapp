@@ -1,6 +1,28 @@
 <div class="container">
   <p>labs works!</p>
 
+  <section>
+    <h1>ReactiveFormsModule</h1>
+
+    <p>{{ colorControl.value }}</p>
+    <input type="color" [formControl]="colorControl">
+
+  </section>
+
+  <hr>
+  <h2>ngsWitch</h2>
+
+
+  <br>
+  <hr>
+  <h2>ngIf</h2>
+  <div *ngIf=" name() === 'Armando Ruiz'"> My content</div>
+
+  <h2>ngIf else</h2>
+  <div> Mi edad es {{ age}}</div>
+  <div *ngIf="age > 28; else ageBlock">soy mayor de 28 años</div>
+  <ng-template #ageBlock>Soy menor de 28 años</ng-template>
+
   <br />
   <h2>Eventos</h2>
   <button (click)="clickHandler()">Click me, I'm a button</button>
@@ -46,4 +68,6 @@
   <p>person: {{ person.name }}, age {{ person.age }}</p>
   <img [src]="person.avatar" alt="avatar" />
   <br />
+
+
 </div>

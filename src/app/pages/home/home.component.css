@@ -1,5 +1,6 @@
 .container {
   width: 600px;
+  margin-top: 5rem;
 }
 
 .newTask.input {
@@ -18,14 +19,17 @@
 .tasks ul {
   list-style: none;
 }
-.tasks ul li {
-  display: flex;
+.tasks ul .task {
   font-size: 1.5rem;
   border-bottom: 1px solid #dad7cd;
   padding: 20px;
   align-items: center;
+  color: #434042;
 }
-.tasks ul li .circle {
+.tasks ul .task .view{
+  display: flex;
+}
+.tasks ul .task .circle {
   border: 1px solid black;
   border-radius: 50%;
   width: 30px;
@@ -33,12 +37,65 @@
   display: inline-block;
   cursor: pointer;
   margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-.tasks ul li .close {
+.tasks ul .task.completed .circle{
+  background-color: #33a010;
+  border: 1px solid #33a010;
+}
+.tasks ul .task.completed .title{
+  text-decoration: line-through;
+}
+
+/* editing mode */
+.tasks ul .task.editing .view{
+  display: none;
+}
+.tasks ul .task .edit{
+  display: none;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #c6c2c2;
+  padding: 10px 15px;
+  color: #575153;
+}
+.tasks ul .task.editing .edit{
+  display: flex;
+}
+
+.tasks ul .task .close {
   display: none;
   margin-left: 20px;
   cursor: pointer;
 }
-.tasks ul li:hover .close {
+.tasks ul .task:hover .close {
   display: block;
+  margin-left: auto;
+}
+
+/* Controls */
+
+.controls{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.controls .count{
+  font-weight: bold;
+}
+.controls .filters{
+  display: flex;
+}
+.controls .filters li{
+  margin: 0 10px;
+}
+.controls .filters li a{
+  padding: 2px 10px;
+}
+.controls .filters li .selected{
+  border: 1px solid #575153;
+  border-radius: 3px;
 }
