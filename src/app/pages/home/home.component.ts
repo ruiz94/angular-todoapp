@@ -1,5 +1,5 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import type { Task, Filter } from '../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from "uuid";
@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

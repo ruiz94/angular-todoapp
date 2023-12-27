@@ -10,64 +10,71 @@
   </section>
 
   <hr>
-  <h2>ngsWitch</h2>
+    <h2>ngsWitch</h2>
 
 
-  <br>
-  <hr>
-  <h2>ngIf</h2>
-  <div *ngIf=" name() === 'Armando Ruiz'"> My content</div>
+    <br>
+      <hr>
+        <h2>ngIf</h2>
+        @if ( name() === 'Armando Ruiz') {
+          <div> My content</div>
+        }
 
-  <h2>ngIf else</h2>
-  <div> Mi edad es {{ age}}</div>
-  <div *ngIf="age > 28; else ageBlock">soy mayor de 28 años</div>
-  <ng-template #ageBlock>Soy menor de 28 años</ng-template>
+        <h2>ngIf else</h2>
+        <div> Mi edad es {{ age}}</div>
+        @if (age > 28) {
+          <div>soy mayor de 28 años</div>
+        } @else {
+          Soy menor de 28 años
+        }
 
-  <br />
-  <h2>Eventos</h2>
-  <button (click)="clickHandler()">Click me, I'm a button</button>
-  <button (dblclick)="clickHandler()">double click, I'm a button</button>
-  <p>(change)</p>
-  <input
-    type="text"
-    name="age"
-    id="age"
-    [value]="age"
-    (change)="handlerInput($event)"
-  />
-  <p>(keydown)</p>
-  <input
-    type="text"
-    name="name"
-    [value]="name()"
-    (keydown)="keydownHandlerInput($event)"
-  />
-  <br />
+        <br />
+        <h2>Eventos</h2>
+        <button (click)="clickHandler()">Click me, I'm a button</button>
+        <button (dblclick)="clickHandler()">double click, I'm a button</button>
+        <p>(change)</p>
+        <input
+          type="text"
+          name="age"
+          id="age"
+          [value]="age"
+          (change)="handlerInput($event)"
+          />
+        <p>(keydown)</p>
+        <input
+          type="text"
+          name="name"
+          [value]="name()"
+          (keydown)="keydownHandlerInput($event)"
+          />
+        <br />
 
-  <h1>Hola este es mi primer proyecto</h1>
-  <h2>{{ welcome }}</h2>
-  <ul>
-    <p>Total: {{ tasks().length }}</p>
-    <li *ngFor="let task of tasks(); let i = index">{{ i }} {{ task }}</li>
-  </ul>
-  <hr />
-  <h3>{{ 'hola'.repeat(4) }}</h3>
-  <p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
-  <p>Hola soy {{ name() }} y tengo {{ age }} años</p>
-  <hr />
-  <img [src]="imgUrl" alt="" />
-  <input
-    type="text"
-    name=""
-    id=""
-    [value]="name()"
-    (change)="changeName($event)"
-  />
-  <button [disabled]="disabled">Click me</button>
-  <br />
-  <p>person: {{ person.name }}, age {{ person.age }}</p>
-  <img [src]="person.avatar" alt="avatar" />
-  <br />
+        <h1>Hola este es mi primer proyecto</h1>
+        <h2>{{ welcome }}</h2>
+        <ul>
+          <p>Total: {{ tasks().length }}</p>
+          @for (task of tasks(); track task; let i = $index) {
+            <li>{{ i }} {{ task }}</li>
+          }
+        </ul>
+        <hr />
+        <h3>{{ 'hola'.repeat(4) }}</h3>
+        <p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
+        <p>Hola soy {{ name() }} y tengo {{ age }} años</p>
+        <hr />
+        <img [src]="imgUrl" alt="" />
+        <input
+          type="text"
+          name=""
+          id=""
+          [value]="name()"
+          (change)="changeName($event)"
+          />
+        <button [disabled]="disabled">Click me</button>
+        <br />
+        <p>person: {{ person.name }}, age {{ person.age }}</p>
+        <img [src]="person.avatar" alt="avatar" />
+        <br />
 
 
-</div>
+      </div>

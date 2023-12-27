@@ -5,23 +5,23 @@
     placeholder="Nueva task"
     [formControl]="taskControl"
     (keydown.enter)="handlerChange()"
-  />
+    />
   <div class="tasks">
     <ul>
-      <li class="task"
-      *ngFor="let task of tasksByFilter()"
-      [class.completed]="task.completed"
-      [class.editing]="task.editing"
-      (dblclick)="updateEditingMode(task.id)"
-
-      >
-        <div class="view">
-          <div class="circle"  (click)="onCompleted(task.id)"></div>
-          <span class="title"> {{ task.title }}</span>
-          <div class="close" (click)="deleteTask(task.id)">x</div>
-        </div>
-        <input type="text" class="edit" [value]="task.title" (change)="updateTask(task.id, $event)" >
-      </li>
+      @for (task of tasksByFilter(); track task) {
+        <li class="task"
+          [class.completed]="task.completed"
+          [class.editing]="task.editing"
+          (dblclick)="updateEditingMode(task.id)"
+          >
+          <div class="view">
+            <div class="circle"  (click)="onCompleted(task.id)"></div>
+            <span class="title"> {{ task.title }}</span>
+            <div class="close" (click)="deleteTask(task.id)">x</div>
+          </div>
+          <input type="text" class="edit" [value]="task.title" (change)="updateTask(task.id, $event)" >
+        </li>
+      }
       <div class="controls">
         <div class="count">
           {{tasksByFilter().length}} Item{{ tasksByFilter().length === 1 ? '':'s'}}
